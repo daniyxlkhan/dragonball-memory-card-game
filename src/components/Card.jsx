@@ -1,10 +1,12 @@
 import '../styles/Card.css';
 
-function Card() {
+function Card({ id, name, image }) {
     return (
         <div className='card'>
-            <img className='image'></img>
-            <span className='name'></span>
+            <img className='image' src={image} alt={name} />
+            <span className='name'>{name}</span>
         </div>
     );
 }
+
+export default Card;

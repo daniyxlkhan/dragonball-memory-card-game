@@ -3,6 +3,8 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+import Card from './components/Card'
+
 import Header from './components/Header'
 
 function App() {
@@ -38,7 +40,19 @@ function App() {
   }
 
   return (
+    <>
       <Header/>
+      <div className="cards-container">
+        {characters.map((character) => (
+          <Card 
+            key={character.id}
+            id={character.id}
+            name={character.name}
+            image={character.image}
+          />
+        ))}
+      </div>
+    </>
   )
 }
 
