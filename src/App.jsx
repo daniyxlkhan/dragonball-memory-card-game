@@ -16,6 +16,7 @@ function App() {
         // Only keep name and image properties
         const filteredCharacters = data.items
           .map(character => ({
+            id: character.id,
             name: character.name,
             image: character.image
           }));
