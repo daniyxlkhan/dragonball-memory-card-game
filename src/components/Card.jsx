@@ -1,13 +1,15 @@
 import '../styles/Card.css';
 import { useState } from 'react';
 
-function Card({ id, name, image }) {
+function Card({ id, name, image, updateScore, updateBestScore }) {
     const [clicked, setClicked] = useState('No');
 
     const handleClick = () => {
         if (clicked === 'Yes') {
-            console.log(`This characeter has already been clicked ${id}`);
+            updateScore(0);
         } else {
+            updateBestScore(prevScore => prevScore + 1);
+            updateScore(prevScore => prevScore + 1);
             setClicked('Yes');
         }
     }

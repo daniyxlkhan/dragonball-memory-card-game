@@ -1,7 +1,7 @@
 import '../styles/CardContainer.css';
 import Card from './Card';
 
-function CardsContainer({characters, shuffler}) {
+function CardsContainer({characters, shuffler, updateScore, updateBestScore}) {
     const handleClick = () => {
         shuffler();
     }
@@ -14,6 +14,8 @@ function CardsContainer({characters, shuffler}) {
             id={character.id}
             name={character.name}
             image={character.image}
+            updateScore={updateScore}
+            updateBestScore={updateBestScore}
           />
         ))}
       </div>

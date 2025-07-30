@@ -1,6 +1,6 @@
 import '../styles/Header.css';
 
-function Header() {
+function Header({score, bestScore}) {
     return (
         <div className="main-container">
             <div>
@@ -9,8 +9,8 @@ function Header() {
             </div>
             
             <div className="score-counter">
-                <p>Score: </p>
-                <p>Best score: </p>
+                <p>Score: {score}</p>
+                <p>Best score: {bestScore}</p>
             </div>
         </div>
     );

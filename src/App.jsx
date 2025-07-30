@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, use } from 'react'
 import { shuffle } from 'lodash';
 import './App.css'
 
@@ -9,6 +9,16 @@ import Header from './components/Header'
 function App() {
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [score, setScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
+
+  const updateScore = () => {
+    setScore(prevScore => prevScore + 1);
+  }
+
+  const updateBestScore = () => {
+    setBestScore(prevBestScore => prevBestScore + 1);
+  }
 
   const shuffler = () => {
     setCharacters(prevCharacters => shuffle(prevCharacters));
@@ -47,10 +57,15 @@ function App() {
 
   return (
     <>
-      <Header/>
+      <Header
+        score={score}
+        bestScore={bestScore}
+      />
       <CardsContainer 
         characters={characters}
         shuffler={shuffler}
+        updateScore={setScore}
+        updateBestScore={setBestScore}
       />
     </>
   )
