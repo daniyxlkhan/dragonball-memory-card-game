@@ -1,7 +1,8 @@
 import '../styles/Card.css';
 import { useState } from 'react';
+import dragonBallBack from '../assets/dragonball_card_back.jpg';
 
-function Card({ id, name, image, updateScore, updateBestScore }) {
+function Card({ id, name, image, updateScore, updateBestScore, isFlipped }) {
     const [clicked, setClicked] = useState('No');
 
     const handleClick = () => {
@@ -15,9 +16,19 @@ function Card({ id, name, image, updateScore, updateBestScore }) {
     }
 
     return (
-        <div className='card' onClick={handleClick} data-id={id}>
-            <img className='image' src={image} alt={name} />
-            <span className='name'>{name}</span>
+        <div className={`card ${isFlipped ? 'flipped' : ''}`} onClick={handleClick} data-id={id}>
+            <div className="card-inner">
+                {/* Front side - Character */}
+                <div className="card-front">
+                    <img className='image' src={image} alt={name} />
+                    <span className='name'>{name}</span>
+                </div>
+                
+                {/* Back side - Dragon Ball card back */}
+                <div className="card-back">
+                    <img className='back-image' src={dragonBallBack} alt="Dragon Ball Card Back" />
+                </div>
+            </div>
         </div>
     );
 }
