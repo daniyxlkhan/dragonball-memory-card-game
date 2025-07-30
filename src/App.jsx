@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { shuffle } from 'lodash';
 import './App.css'
 
 import CardsContainer from './components/CardContainer'
@@ -11,18 +10,25 @@ function App() {
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const shuffler = () => {
+    setCharacters(prevCharacters => shuffle(prevCharacters));
+  }
+
   useEffect(() => {
     const fetchAndFilterData = async () => {
       try {
         const data = await getDragonBallCharacters();
-        // Only keep name and image properties
-        const filteredCharacters = data.items
+        // Only keep id, name and image properties
+        let filteredCharacters = data.items
           .map(character => ({
             id: character.id,
             name: character.name,
             image: character.image
           }));
-        setCharacters(filteredCharacters); 
+        
+        // Shuffle the characters before setting them in state
+        const shuffledCharacters = shuffle(filteredCharacters);
+        setCharacters(shuffledCharacters);
         setLoading(false);
       } catch (error) {
         console.error("Failed to fetch characters:", error);
@@ -42,7 +48,10 @@ function App() {
   return (
     <>
       <Header/>
-      <CardsContainer characters={characters}/>
+      <CardsContainer 
+        characters={characters}
+        shuffler={shuffler}
+      />
     </>
   )
 }

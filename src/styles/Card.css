@@ -9,24 +9,25 @@
     margin: 8px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     cursor: pointer;
-    max-width: 200px;
+    max-width: 220px;
 }
 
 .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-6px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
 }
 
 .image {
-    width: 150px;
-    height: 150px;
+    width: 220px;
+    height: 250px;
     object-fit: cover;
+    object-position: top; 
     border-radius: 8px;
     margin-bottom: 12px;
 }
 
 .name {
-    font-size: 1.3rem;
-    color: #01080a;
+    font-size: 1.5rem;
+    color: #fbbc42;
     font-family: "Saiyan-Sans", Arial, sans-serif;
 }
