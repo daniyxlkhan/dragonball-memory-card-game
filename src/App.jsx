@@ -79,7 +79,7 @@ function App() {
 
 async function getDragonBallCharacters() {
   try {
-    const response = await fetch("https://dragonball-api.com/api/characters");
+    const response = await fetch("https://dragonball-api.com/api/characters?limit=12");
     
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
