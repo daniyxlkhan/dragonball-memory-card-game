@@ -2,15 +2,14 @@ import '../styles/Card.css';
 import { useState } from 'react';
 import dragonBallBack from '../assets/dragonball_card_back.jpg';
 
-function Card({ id, name, image, updateScore, updateBestScore, isFlipped }) {
+function Card({ id, name, image, updateScore, isFlipped }) {
     const [clicked, setClicked] = useState('No');
 
     const handleClick = () => {
         if (clicked === 'Yes') {
-            updateScore(0);
+            updateScore('reset');
         } else {
-            updateBestScore(prevScore => prevScore + 1);
-            updateScore(prevScore => prevScore + 1);
+            updateScore('increment');
             setClicked('Yes');
         }
     }

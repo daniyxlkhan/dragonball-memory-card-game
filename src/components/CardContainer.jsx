@@ -2,7 +2,7 @@ import '../styles/CardContainer.css';
 import Card from './Card';
 import { useState } from 'react';
 
-function CardsContainer({characters, shuffler, updateScore, updateBestScore}) {
+function CardsContainer({characters, shuffler, updateScore}) {
     const [isFlipping, setIsFlipping] = useState(false);
 
     const handleClick = () => {
@@ -29,7 +29,6 @@ function CardsContainer({characters, shuffler, updateScore, updateBestScore}) {
             name={character.name}
             image={character.image}
             updateScore={updateScore}
-            updateBestScore={updateBestScore}
             isFlipped={isFlipping}
           />
         ))}

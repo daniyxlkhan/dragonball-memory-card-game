@@ -12,9 +12,16 @@ function App() {
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
 
-  const updateScore = () => {
-    setScore(prevScore => prevScore + 1);
-  }
+  const updateScore = (action) => {
+    if (action === 'reset') {
+      if (score > bestScore) {
+        setBestScore(score);
+        setScore(0);
+      }
+    } else if (action === 'increment') {
+      setScore(prevScore => prevScore + 1);
+    }
+  } 
 
   const updateBestScore = () => {
     setBestScore(prevBestScore => prevBestScore + 1);
@@ -64,8 +71,7 @@ function App() {
       <CardsContainer 
         characters={characters}
         shuffler={shuffler}
-        updateScore={setScore}
-        updateBestScore={setBestScore}
+        updateScore={updateScore}
       />
     </>
   )
